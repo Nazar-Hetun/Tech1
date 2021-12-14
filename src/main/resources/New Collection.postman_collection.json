@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "a4679c82-a9ca-46e7-945c-2c6a4892972c",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Дістати унікальні name з Users, в яких більше ніж 3 Articles",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "nqwerty",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "nazar",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/users/more-then-3-articles",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"more-then-3-articles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Отримати jwt token",
+			"protocolProfileBehavior": {
+				"followOriginalHttpMethod": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"login\":\"nazar\",\r\n\"password\":\"nqwerty\"\r\n }"
+				},
+				"url": {
+					"raw": "localhost:8080/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Дістати всіх Users з Articles, в яких color якесь певне значення з enum-а",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuYXphciIsInJvbGVzIjpbXSwiaWF0IjoxNjM5NDM4NDYxLCJleHAiOjE2Mzk0NDIwNjF9.7DCKy_RiDFL8Lsu-TeFl3eujwUZil6Jo7tP9S25vIU8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/users/by-color?color=BLUE",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"by-color"
+					],
+					"query": [
+						{
+							"key": "color",
+							"value": "BLUE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Дістати всіх Users, в яких age більше за якесь значення",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuYXphciIsInJvbGVzIjpbXSwiaWF0IjoxNjM5NDM4NDYxLCJleHAiOjE2Mzk0NDIwNjF9.7DCKy_RiDFL8Lsu-TeFl3eujwUZil6Jo7tP9S25vIU8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/users/by-age?age=25",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"by-age"
+					],
+					"query": [
+						{
+							"key": "age",
+							"value": "25"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Добавити нового User з Articles",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"login\": \"serg\",\r\n\"password\": \"sqwerty\",\r\n\"name\": \"serg\",\r\n\"age\": 26,\r\n\"articles\":[{\r\n    \"color\": \"green\",\r\n    \"text\": \"a\"\r\n}]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
