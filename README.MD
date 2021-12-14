@@ -1,7 +1,7 @@
 ### Tecnologies
 Hibernate, Spring(Boot, Core, Web, Security), H2DB, Tomcat, JWT, JSON.
 
-###Endpoints:
+### Endpoints:
  `/login` - authenticate User.<br />
  `/register` - register new User with his Articles.<br />
  `/users/by-color` - get all Users with Article that have specified color.<br />
