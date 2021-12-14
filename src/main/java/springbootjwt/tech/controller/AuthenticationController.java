@@ -34,7 +34,7 @@ public class AuthenticationController {
     private final JwtTokenProvider jwtTokenProvider;
 
     @PostMapping("/register")
-    public UserResponseDto add(@RequestBody UserRequestDto userRequestDto) {
+    public UserResponseDto add(@RequestBody @Valid UserRequestDto userRequestDto) {
         User user = userMapper.mapToModel(userRequestDto);
         List<Article> articles = user.getArticles();
         articles.forEach(articleService::save);

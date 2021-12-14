@@ -1,6 +1,8 @@
 package springbootjwt.tech.controller;
 
+import javax.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springbootjwt.tech.dto.ArticleRequestDto;
@@ -21,7 +23,7 @@ public class ArticleController {
     }
 
     @PostMapping
-    public ArticleResponseDto add(ArticleRequestDto articleRequestDto) {
+    public ArticleResponseDto add(@RequestBody @Valid ArticleRequestDto articleRequestDto) {
         Article article = articleMapper.mapToModel(articleRequestDto);
         articleService.save(article);
         return articleMapper.mapToDto(article);
